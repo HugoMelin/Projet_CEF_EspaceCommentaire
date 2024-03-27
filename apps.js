@@ -5,7 +5,7 @@ function testSiNonVide(variable) {
 }
 
 function ecouteTryCatch(element) {
-    element.addEventListener('change', () => {
+    element.addEventListener('input', () => {
         let alertMessage = document.getElementById("error-message")
         alertMessage.style.display = "none"
         try {
@@ -40,3 +40,18 @@ ecouteTryCatch(lastName)
 
 let message = document.getElementById("message")
 ecouteTryCatch(message)
+
+//Gestion du click sur le boutton en ajoutant le commentaire
+let alertMessage = document.getElementById("error-message")
+let button = document.querySelector("button")
+button.addEventListener('click', (event) => {
+    event.preventDefault()
+    if (!firstName.value || !lastName.value || !message.value) {
+        alertMessage.style.display = ""
+    } else {
+        createComment(firstName.value,lastName.value,message.value)
+        firstName.value=""
+        lastName.value=""  
+        message.value=""
+    }
+})
