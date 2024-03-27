@@ -1,6 +1,6 @@
 function testSiNonVide(variable) {
     if (!variable) {
-        throw new Error("Value too small!")
+        throw new Error(`Variable is too small!`)
     }
 }
 
@@ -32,6 +32,7 @@ function createComment(firstName, lastName, message) {
     commentList.appendChild(div1)
 }
 
+//Ecoute des champs et vérification qu'ils soient non vide
 let firstName = document.getElementById("first-name")
 ecouteTryCatch(firstName)
 
