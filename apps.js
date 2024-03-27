@@ -6,19 +6,22 @@ function testSiNonVide(variable) {
 
 function ecouteTryCatch(element) {
     element.addEventListener('change', () => {
+        let alertMessage = document.getElementById("error-message")
+        alertMessage.style.display = "none"
         try {
             testSiNonVide(element.value)
-            console.log(element.value)
     } catch (error) {
+        alertMessage.style.display = ""
         console.log(element.name + " : " + error.message)
     }
     })
 }
 
 let firstName = document.getElementById("first-name")
-let lastName = document.getElementById("last-name")
-let message = document.getElementById("message")
-
 ecouteTryCatch(firstName)
+
+let lastName = document.getElementById("last-name")
 ecouteTryCatch(lastName)
+
+let message = document.getElementById("message")
 ecouteTryCatch(message)
