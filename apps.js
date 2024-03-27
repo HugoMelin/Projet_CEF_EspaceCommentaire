@@ -4,12 +4,21 @@ function testSiNonVide(variable) {
     }
 }
 
-let firstName = document.getElementById("first-name")
-
-firstName.addEventListener("change", () => {
-    try {
-        testSiNonVide(firstName.value)
+function ecouteTryCatch(element) {
+    element.addEventListener('change', () => {
+        try {
+            testSiNonVide(element.value)
+            console.log(element.value)
     } catch (error) {
-        console.log(error.message)
+        console.log(element.name + " : " + error.message)
     }
-})
+    })
+}
+
+let firstName = document.getElementById("first-name")
+let lastName = document.getElementById("last-name")
+let message = document.getElementById("message")
+
+ecouteTryCatch(firstName)
+ecouteTryCatch(lastName)
+ecouteTryCatch(message)
