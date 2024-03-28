@@ -52,12 +52,11 @@ message.addEventListener('input', (event) => {
 })
 
 //Gestion du click sur le boutton en ajoutant le commentaire
-let alertMessage = document.getElementById("error-message")
 let button = document.querySelector("button")
 button.addEventListener('click', (event) => {
     event.preventDefault()
     if (!firstName.value || !lastName.value || !message.value) {
-        alertMessage.style.display = ""
+        afficheMessageErreur()
     } else {
         createComment(firstName.value,lastName.value,message.value)
         firstName.value=""
