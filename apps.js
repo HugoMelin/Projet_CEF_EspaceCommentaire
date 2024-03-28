@@ -1,32 +1,3 @@
-function afficheMessageErreur() {
-    let alertMessage = document.getElementById("error-message")
-    alertMessage.style.display = ""
-}
-
-function supprimeMessageErreur() {
-    let alertMessage = document.getElementById("error-message")
-    alertMessage.style.display = "none"
-}
-
-function testSiNonVide(variable) {
-    if (!variable) {
-        throw new Error(`Variable is too small!`)
-    }
-}
-
-function ecouteTryCatch(element) {
-    element.addEventListener('input', () => {
-        let alertMessage = document.getElementById("error-message")
-        alertMessage.style.display = "none"
-        try {
-            testSiNonVide(element.value)
-    } catch (error) {
-        alertMessage.style.display = ""
-        console.log(element.name + " : " + error.message)
-    }
-    })
-}
-
 function createComment(firstName, lastName, message) {
     let div1 = document.createElement("div")
     div1.innerHTML = `<div class="flex space-x-4 text-sm text-gray-500">
@@ -42,15 +13,43 @@ function createComment(firstName, lastName, message) {
     commentList.appendChild(div1)
 }
 
-//Ecoute des champs et vérification qu'ils soient non vide
+function afficheMessageErreur() {
+    let alertMessage = document.getElementById("error-message")
+    alertMessage.style.display = ""
+}
+
+function supprimeMessageErreur() {
+    let alertMessage = document.getElementById("error-message")
+    alertMessage.style.display = "none"
+}
+
+function testSiNonVide(variable) {
+    try {
+        if (variable){
+            supprimeMessageErreur()
+        } else {
+            throw new Error("Variable is too small")
+        }
+    } catch (e) {
+        afficheMessageErreur()
+    }
+}
+
+//Ecoute des champs du formulaire
 let firstName = document.getElementById("first-name")
-ecouteTryCatch(firstName)
+firstName.addEventListener('input', (event) => {
+    testSiNonVide(firstName.value)
+})
 
 let lastName = document.getElementById("last-name")
-ecouteTryCatch(lastName)
+lastName.addEventListener('input', (event) => {
+    testSiNonVide(lastName.value)
+})
 
 let message = document.getElementById("message")
-ecouteTryCatch(message)
+message.addEventListener('input', (event) => {
+    testSiNonVide(message.value)
+})
 
 //Gestion du click sur le boutton en ajoutant le commentaire
 let alertMessage = document.getElementById("error-message")
