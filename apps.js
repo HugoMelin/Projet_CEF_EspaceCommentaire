@@ -1,3 +1,13 @@
+function afficheMessageErreur() {
+    let alertMessage = document.getElementById("error-message")
+    alertMessage.style.display = ""
+}
+
+function supprimeMessageErreur() {
+    let alertMessage = document.getElementById("error-message")
+    alertMessage.style.display = "none"
+}
+
 function testSiNonVide(variable) {
     if (!variable) {
         throw new Error(`Variable is too small!`)
